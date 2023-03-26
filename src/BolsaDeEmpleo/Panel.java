@@ -237,12 +237,36 @@ public class Panel {
                 case 7:
                     System.out.println("Ha seleccionado la opción 7.");
                     // aquí iría el código para la opción 7
+                    System.out.println("Ingresa CEDULA el aspirante que contaras");
+                    String cc = entrada.nextLine();
+                    Aspirante contratado = listaAspirantes.queryForId(cc);
+                    listaAspirantes.delete(contratado);
+                    System.out.println("El aspirante ha sido contratado.");
                     break;
 
 
                 case 8:
                     System.out.println("Ha seleccionado la opción 8.");
                     // aquí iría el código para la opción 8
+                    List<Aspirante> aspirantesAEliminar = new ArrayList();
+                    Iterator var4 = listaAspirantes.iterator();
+
+                    int aniosExperienciaMinimos = 0;
+                    System.out.println("Por favor ingresa la cantidad de experiencia que deceas eliminar");
+                    aniosExperienciaMinimos = entrada.nextInt();
+
+                    while(var4.hasNext()) {
+                        Aspirante aspirante_1 = (Aspirante)var4.next();
+                        if (aspirante_1.getAnosExperiencia() < aniosExperienciaMinimos) {
+                            aspirantesAEliminar.add(aspirante_1);
+                        }
+                    }
+
+                    int size = aspirantesAEliminar.size();
+                    for (int i = 0; i < size; i++){
+                        listaAspirantes.delete(aspirantesAEliminar.get(i));
+                    }
+                    System.out.println("Se han eliminado " + aspirantesAEliminar.size() + " aspirantes con poca experiencia.");
                     break;
 
 
@@ -305,7 +329,7 @@ public class Panel {
                 qb.orderBy("profesion",order);
                 break;
             default:
-                qb.orderBy("anosExperiencia",order);
+                qb.orderBy("anosExperiencia",order).prepare();
         }
 
         List<Aspirante> Aspirantes = qb.query();
