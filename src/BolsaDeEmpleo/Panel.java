@@ -103,7 +103,7 @@ public class Panel {
 
                 case 2:
                     System.out.println("2. Mostrar la información detallada de un aspirante por medio de Cedula.");
-                    // aquí iría el código para la opción 2
+
                     System.out.println();
                     System.out.print("Ingrese el numero de cedula a buscar: ");
                     cedula = entrada.nextLine();
@@ -135,12 +135,17 @@ public class Panel {
                     System.out.println("Ingrese  el nombre completo del aspirante: ");
                     nombre= entrada.nextLine();
 
+
                     // itera a través de la lista de aspirantes y agrega aquellos que tengan un nombre
                     // que coincida con el ingresado por el usuario en una lista de aspirantes encontrados.
+
+                    //Creamos uan lista vacia  que se usara para  almacenar los nombre que coincidan por el ingresado por el usuario
+                    // Luego, se recorre la lista original listaAspirantes utilizando un bucle for y se compara el nombre completo de cada objeto Aspirante
 
                     List<Aspirante> aspirantesEncontrados = new ArrayList<>();
                     for (Aspirante aspirante2 : listaAspirantes) {
                         if (aspirante2.getNombreCompleto().equalsIgnoreCase(nombre)) {
+                            //si se encuentran coincidencias se agrega a la lista por medio del metodo add a aspirantes encontrados.
                             aspirantesEncontrados.add(aspirante2);
                         }
                     }
@@ -167,7 +172,7 @@ public class Panel {
 
                 case 4:
                     System.out.println("Ha seleccionado la opción 4.");
-                    // aquí iría el código para la opción 4
+
 
                     List<Aspirante> AspirantesOrden = generateParameterOrderLista(listaAspirantes);
                     int sizeListAspirantes = AspirantesOrden.size();
@@ -235,13 +240,13 @@ public class Panel {
 
 
                 case 7:
-                    System.out.println("Ha seleccionado la opción 7.");
+                    System.out.println("7. Contratar un aspirante (eliminarlo de la lista de aspirantes de la bolsa).");
                     // aquí iría el código para la opción 7
                     break;
 
 
                 case 8:
-                    System.out.println("Ha seleccionado la opción 8.");
+                    System.out.println("8. Eliminar aquellos aspirantes cuya experiencia sea menor a una cantidad de años especificada.");
                     // aquí iría el código para la opción 8
                     break;
 
